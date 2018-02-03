@@ -1,13 +1,13 @@
-## R Programming week 4 Assignment.
+## R Programming week 3 Assignment.
 ## makeCacheMatrix - function helps storing matrix and its inverse.
 ## cacheSolve - retrieves inverse and calculates it if necessary.
 
 
-## Function makeCacheMatrix initializes an object that stores a numeric matrix passed to it 
+## makeCacheMatrix initializes an object that stores a numeric matrix passed to it 
 ## as an argument (x), as well as an inverse (inv) of that matrix as initialized object variables.
 ## Object provides basic behaviour:
-## - returns matrix stored by object and replaces it with another matrix;
-## - returns stored inverse matrix and sets it.
+## - returns matrix stored by object(get) and replaces it with another matrix (set);
+## - returns stored inverse matrix (getinverse) and sets it (setinverse).
 
 makeCacheMatrix <- function(x = matrix()) {
     inv<-NULL
