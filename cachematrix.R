@@ -1,15 +1,41 @@
-## Put comments here that give an overall description of what your
-## functions do
+## R Programming week 4 Assignment.
+## makeCacheMatrix - function helps storing matrix and its inverse.
+## cacheSolve - retrieves inverse and calculates it if necessary.
 
-## Write a short comment describing this function
+
+## Function makeCacheMatrix initializes an object that stores a numeric matrix passed to it 
+## as an argument (x), as well as an inverse (inv) of that matrix as initialized object variables.
+## Object provides basic behaviour:
+## - returns matrix stored by object and replaces it with another matrix;
+## - returns stored inverse matrix and sets it.
 
 makeCacheMatrix <- function(x = matrix()) {
+    inv<-NULL
+    set <- function(y) {
+        x <<- y
+        inv <<- NULL
+    }
+    get <- function() x
+    setinverse <- function(inver) inv <<- inver
+    getinverse <- function() inv
+    list(set = set, get = get,
+         setinverse = setinverse,
+         getinverse = getinverse)
 
 }
 
 
-## Write a short comment describing this function
+## Function cacheSolve returns the inverse matrix stored in object passed to it as an argument.
+## In case passed object has the inverse set to null cacheSolve will calculate it and use the set method of an object to store inverse for future use.
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+    inv <- x$getinverse()
+    if(!is.null(inv)) {
+        message("getting cached data")
+        return(inv)
+    }
+    matrixX <- x$get()
+    inv <- solve(matrixX, ...)
+    x$setinverse(inv)
+    inv
 }
